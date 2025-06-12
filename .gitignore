@@ -1,0 +1,5 @@
+__pycache__/**
+
+gmm/__pycache__/**
+gmm/gmm.egg-info/**
+gmm.egg-info/**
