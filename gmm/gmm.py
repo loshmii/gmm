@@ -166,7 +166,7 @@ class GaussianMixture:
             plt.title("EM Convergence")
             plt.show()
         if cluster_scatter and self.means is not None and self.covs is not None:
-            if self._X is not None or self._X.shape[1] != 2:
+            if self._X is None or self._X.shape[1] != 2:
                 raise ValueError("Cluster scatter plot requires 2D data.")
             labels = self.predict(self._X)
             plt.figure()
