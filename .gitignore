@@ -1,4 +1,5 @@
 __pycache__/**
+.vscode/**
 
 gmm/__pycache__/**
 gmm/gmm.egg-info/**

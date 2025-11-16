@@ -1,6 +1,8 @@
 # JAX Gaussian Mixture Model
 
-Fast JAX implementation of the Expectation-Maximisation algorithm for Gaussian Mixture Models (GMMs). This library leverages JAX JIT compilation, 64-bit precision and Cholesky-based covariance calculations for numerical-stability. 
+Fast JAX implementation of the Expectation-Maximisation algorithm for Gaussian Mixture Models (GMMs). This library leverages JAX JIT compilation, 64-bit precision and Cholesky-based covariance calculations for numerical-stability.
+
+The algorithm derivation is located in the [Derivation PDF](./derivationGMM.pdf)
 
 ## Installation
 
