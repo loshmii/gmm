@@ -81,7 +81,7 @@ def _negative_loglikelihood(
 
 
 class GaussianMixture:
-    """Fast EM-based Gassuain Micture Model implementation in JAX."""
+    """Fast EM-based Gassuain Mixture Model implementation in JAX."""
 
     pi: jax.Array | None
     means: jax.Array | None
@@ -148,12 +148,15 @@ class GaussianMixture:
         """Log-likelihood of each sampler under the model"""
 
         X = jnp.asarray(X, dtype=jnp.float64)
-        log_probs = jax.vmap(
-            lambda x: jax.vmap(log_mvn_numerics, in_axes=(None, 0, 0))(
-                x, self.means, self.covs
-            )
-        )(X)
-        log_pi = jnp.log(self.pi + 1e-6)
+
+        jittered_cov = self.covs + 1e-6 * jnp.eye(self.covs.shape[-1])
+        L = jnp.linalg.cholesky(jittered_cov)
+
+        log_probs = log_mvn_from_cholesky(X, self.means, L)
+
+        pi = jnp.clip(self.pi, 1e-16, 1.0 - 1e-6)
+        pi = pi / jnp.sum(pi)
+        log_pi = jnp.log(pi)
         return logsumexp(log_probs + log_pi, axis=-1)
 
     def plot(self, iter_losses: bool = True, cluster_scatter: bool = False):

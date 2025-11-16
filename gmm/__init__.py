@@ -1,3 +1,3 @@
-from .gmm import GaussianMixture
+from .gmm import GaussianMixture 
 
 __all__ = ["GaussianMixture"]

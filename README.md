@@ -1,6 +1,6 @@
 # JAX Gaussian Mixture Model
 
-Fast JAX implementation of the Expectation-Maximisation algorithm for Gaussian Mixture Models (GMMs). This library leverages JAX JIT compilation, 64-bit precision and Cholesky-based covariance updates for numerically stable training.
+Fast JAX implementation of the Expectation-Maximisation algorithm for Gaussian Mixture Models (GMMs). This library leverages JAX JIT compilation, 64-bit precision and Cholesky-based covariance calculations for numerical-stability. 
 
 ## Installation
 
@@ -45,3 +45,7 @@ print("NLL:", model.loss_trace[-1])
 `score_samples(X)` → Sample log-likelihoods.
 
 `plot(iter_losses=True, cluster_scatter=False)` → Visualise training.
+
+## DEMO
+
+The demo is located in the [Jupyter Notebook](./gmm_jax_em_demo.ipynb)
